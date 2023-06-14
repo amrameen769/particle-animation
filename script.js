@@ -8,6 +8,7 @@ let hue = 0
 const mouse = { x: undefined, y: undefined }
 const numOfParticles = 10
 let particleArr = []
+let gameFrame = 0
 
 window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
@@ -71,6 +72,12 @@ class Particle {
 
 function animate() {
     // ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (gameFrame % 10 === 0){
+        for (let i = 0; i < numOfParticles/4; i++) {
+            particleArr.push(new Particle(ctx))
+        }
+        hue+=3
+    }
     ctx.fillStyle = "rgba(0,0,0,0.1)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     for (let i = 0; i < particleArr.length; i++) {
@@ -95,7 +102,7 @@ function animate() {
             i--
         }
     }
-
+    gameFrame++
     requestAnimationFrame(animate);
 }
 
