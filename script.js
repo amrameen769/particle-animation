@@ -45,6 +45,26 @@ window.addEventListener(
     }
 )
 
+window.addEventListener(
+    "touchmove",
+    (e) => {
+        e.preventDefault()
+        const touches = e.changedTouches
+        for (let t = 0; t < touches.length; t++){
+            mouse.x = touches[t].pageX;
+            mouse.y = touches[t].pageY;
+        }
+        // mouse.x = ;
+        // mouse.y = e.y;
+
+        hue += 3;
+        if (hue === 360) hue = 0
+        for (let i = 0; i < numOfParticles; i++) {
+            particleArr.push(new Particle(ctx))
+        }
+    }
+)
+
 class Particle {
     constructor(context) {
         this.context = context
@@ -71,7 +91,6 @@ class Particle {
 }
 
 function animate() {
-    // ctx.clearRect(0, 0, canvas.width, canvas.height);
     if (gameFrame % 10 === 0){
         for (let i = 0; i < numOfParticles/4; i++) {
             particleArr.push(new Particle(ctx))
