@@ -6,7 +6,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 let hue = 0
 const mouse = { x: undefined, y: undefined }
-const numOfParticles = 10
+const numOfParticles = 1
 let particleArr = []
 let gameFrame = 0
 
